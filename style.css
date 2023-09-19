@@ -88,7 +88,7 @@ html, body{
 .shape{
     stroke-dasharray: 2584;
     stroke-dashoffset: 2584;
-    animation: draw 3s  cubic-bezier(0.175, 0.885, 0.32, 1.275 ) forwards 2s;
+    animation: draw 3s  cubic-bezier(0.175, 0.885, 0.32, 1.275 ) forwards 3s;
 }
 @keyframes draw {
     100%{
@@ -99,7 +99,7 @@ html, body{
 .sm{
     stroke-dasharray: 1381;
     stroke-dashoffset: 1381;
-    animation: draw 3s  cubic-bezier(0.175, 0.885, 0.32, 1.275 ) forwards 5s; ;
+    animation: draw 3s  cubic-bezier(0.175, 0.885, 0.32, 1.275 ) forwards 6s; ;
 }
 .extra-texts{
     color: #444343;
