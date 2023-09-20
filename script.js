@@ -1,8 +1,42 @@
 let cursor = document.querySelector(".cursor");
-document.querySelector(".container").addEventListener("mousemove", (dets) => {
-  cursor.style.top = dets.y + "px";
-  cursor.style.left = dets.x + "px";
-});
+let container = document.querySelector(".container");
+function cursoranim() {
+  container.addEventListener("mousemove", (dets) => {
+    cursor.style.left = dets.x + "px";
+    cursor.style.top = dets.y + "px";
+  });
+}
+cursoranim();
+function locomotive() {
+  gsap.registerPlugin(ScrollTrigger);
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector(".container"),
+    smooth: true,
+  });
+  locoScroll.on("scroll", ScrollTrigger.update);
+  ScrollTrigger.scrollerProxy(".container", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+
+    pinType: document.querySelector(".container").style.transform
+      ? "transform"
+      : "fixed",
+  });
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  ScrollTrigger.refresh();
+}
+// locomotive();
 gsap.from(".navbar img, .navbar .right, .main h5, .main h4", {
   scale: 0,
   opacity: 0,
